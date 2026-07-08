@@ -1,61 +1,34 @@
 -- ============================================================
--- Creating a DuckDB Database in DBeaver
+-- Script: create_schemas.sql
 -- ============================================================
+-- Purpose:
+--   This script creates the three core schemas (bronze, silver,
+--   gold) inside the "DataWarehouse" DuckDB database, following
+--   the Medallion Architecture pattern.
 --
--- This guide explains how to create a new DuckDB database
--- (.duckdb file) using DBeaver.
+--   It assumes the DataWarehouse.duckdb database has already
+--   been created and connected to in DBeaver using the steps
+--   below:
 --
--- ============================================================
--- Prerequisites
--- ============================================================
+--     Step 1: Open DBeaver
+--     Step 2: Create a New Database Connection (Ctrl+Shift+N)
+--     Step 3: Select DuckDB as the driver
+--     Step 4: Create the Database File (DataWarehouse.duckdb)
 --
--- • DBeaver installed
--- • Internet connection (only required the first time to
---   download the DuckDB JDBC driver)
+--   Since DuckDB is a file-based database (the .duckdb file IS
+--   the database), this script does not create the database
+--   itself — only the schemas within it.
 --
--- ============================================================
--- Step 1: Open DBeaver
--- ============================================================
+-- Schemas created:
+--   • bronze  – raw, unprocessed source data (CRM, ERP extracts)
+--   • silver  – cleaned, standardized, and conformed data
+--   • gold    – business-ready, aggregated/reporting data
 --
--- Launch DBeaver on your computer.
---
--- ============================================================
--- Step 2: Create a New Database Connection
--- ============================================================
---
--- • Click "New Database Connection".
--- • Alternatively, press Ctrl + Shift + N.
---
--- ============================================================
--- Step 3: Select DuckDB
--- ============================================================
---
--- 1. Search for DuckDB.
--- 2. Select DuckDB from the list.
--- 3. Click Next.
---
--- If prompted, allow DBeaver to download the DuckDB JDBC driver.
---
--- ============================================================
--- Step 4: Create the Database File
--- ============================================================
---
--- 1. In the Database/File field, click Browse.
--- 2. Navigate to the folder where you want to save the database.
--- 3. Enter a file name ending with ".duckdb".
-
-
--- If the file does not already exist, DuckDB will create it
--- automatically.
--- • DuckDB is a file-based database, not a database server.
--- • A ".duckdb" file IS the database.
--- • To create another database, simply create another .duckdb file.
--- • Schemas such as bronze, silver, and gold help organize data
---   according to the Medallion Architecture.
+-- Usage:
+--   Run this script after connecting to the DataWarehouse
+--   database in DBeaver, before loading any bronze layer tables.
 -- ============================================================
 
-
--- Showinf that we are using the DataWarehouse db
 USE DataWarehouse;
 
 -- Create the Bronze schema
