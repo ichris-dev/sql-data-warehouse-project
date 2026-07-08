@@ -1,5 +1,5 @@
 -- ============================================================
--- Script: create_schemas.sql
+-- Script: init_database.sql
 -- ============================================================
 -- Purpose:
 --   This script creates the three core schemas (bronze, silver,
